@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Vintiki
 {
@@ -12,10 +8,10 @@ namespace Vintiki
     public static bool keepOnGoing = true;
         static void Main(string[] args)
         {
-            Producer a = new Producer(1000, 1);
-            Producer b = new Producer(2000, 1);
-            Producer c = new Producer(3000, 1);
-            Combiner ab = new Combiner(a, b, 1);
+            Producer a = new Producer(1000, 5);
+            Producer b = new Producer(2000, 5);
+            Producer c = new Producer(3000, 5);
+            Combiner ab = new Combiner(a, b, 5);
             Combiner widget = new Combiner(ab, c, 50);
 
             Thread t1 = new Thread(a.Produce);

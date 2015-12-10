@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Vintiki
 {
@@ -26,12 +21,8 @@ namespace Vintiki
         {
             while (Program.keepOnGoing)
             {
-                lock (m1)
-                    lock (m2)
-                    {
-                        m1.Take();
-                        m2.Take();
-                    }
+                m1.Take();
+                m2.Take();
                 freeSlots.Wait();
                 producedCount.Release();
                 if (!String.IsNullOrWhiteSpace((string)message))
